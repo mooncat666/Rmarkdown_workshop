@@ -1,0 +1,14 @@
+name: "my-website"
+navbar:
+  title: "My Website"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+    - text: "My Data" # This adds Rmd to the website strip
+      href: md_ex.html
+output: # this section is to add a table of contents!
+  html_document:
+    toc: true
+    toc_float: true

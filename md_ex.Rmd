@@ -1,0 +1,163 @@
+---
+title: "Markdown example"
+author: "Alice"
+output: html_document
+date: "2025-12-02"
+bibliography: references.bib
+link-citations: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 1,500 scientists {#scientists}
+
+Monya Baker\
+25 May 2016
+
+## Survey 'crisis' research.
+
+**More than 70%**, and more have failed. Citation to my paper @cardona2014 and @cardona2019.
+
+The data reveal contradictory...
+
+```{r load libs,message=FALSE,warning=FALSE}
+library(tidyverse)
+library(patchwork)
+library(rmarkdown) # used for paged_table function
+library(kableExtra) # used for table
+library(ggpubr) #used for ggarrange function 
+```
+
+```{r text, message=TRUE,warning=FALSE}
+
+download.file(url="https://raw.githubusercontent.com/cambiotraining/reproducibility-training/master/data/gapminder_data.csv", destfile="data/gapminder_data.csv")
+
+```
+
+### Lists
+
+**Ordered list**
+
+1.  Item 1
+2.  Item 2\
+3.  Item 3
+    a.  Item 3a
+        i.  Item 3ai\
+        ii. Item 3aii\
+    b.  Item 3b
+    c.  Item 3c\
+4.  Item 4
+
+**Unordered list**
+
+-   Item 1
+-   Item 2
+-   Item 3
+    -   Item 3a
+        -   Item 3ai
+        -   Item 3aii
+    -   Item 3b
+    -   Item 3c
+-   Item 4
+
+**Tasks**
+
+-   [ ] an unchecked task list item
+-   [x] checked item
+
+### Links
+
+[Link to header](#scientists)
+
+[workshop](https://training.cam.ac.uk/bioinformatics/event-timetable)
+
+### Block
+
+> Example of a block
+
+### Table
+
+Manual table
+
+| Column 1 | Column 2 |
+|----------|----------|
+| Item 1,1 | Item 1,2 |
+| Item 2,1 | Item 2,2 |
+
+```{r load-data}
+
+#read file into R
+pop_data <- read_csv("data/gapminder_data.csv")
+
+#create a table with data from European countries in 2007 showing the countries 
+#with the largest life expectancy at the top 
+euro_data_tbl <- pop_data %>% 
+                    filter(continent == "Europe" & year == 2007) %>% 
+                    select(-continent, -year) %>% 
+                    arrange(desc(lifeExp)) %>% 
+                    rename(Country = country, "Population Size" = pop, 
+                      "Life Expectancy" = lifeExp, "GDP" = gdpPercap)
+    
+```
+
+Include full table
+
+```{r table}
+euro_data_tbl %>% 
+          kbl()
+```
+
+Pretty
+
+```{r}
+euro_data_tbl %>% 
+          kbl() %>%
+          kable_styling(bootstrap_options = c("striped", "hover")) 
+```
+
+Paged table
+
+```{r paged table}
+paged_table(euro_data_tbl)
+```
+
+Default table - ugly, don't use
+
+```{r def table}
+euro_data_tbl
+```
+
+### Images
+In Markdown:  
+![Beautiful me](img/photo_5321516238851142298_y.jpg)
+
+In R code:  
+
+```{r patchwork}
+
+p1 <- ggplot(pop_data %>% filter(year==2007),
+             aes(x=gdpPercap,
+                 y=lifeExp,
+                 colour=continent))+
+  geom_point()+
+  scale_x_log10()+
+  theme_minimal()
+
+p2 <- ggplot(pop_data %>% filter(country %in% c("United States",
+                                                "China",
+                                                "India")),
+             aes(x=year,
+                 y=pop,
+                 colour=country))+
+  geom_line()+
+  theme_minimal()
+
+p1 + p2
+p1 / p2
+```
+
+You don't need to do anything with the references, they are generated automatically (_isn't that lovely?!_)
+
+# References

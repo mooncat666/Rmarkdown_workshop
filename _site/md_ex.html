@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Alice" />
+
+<meta name="date" content="2025-12-02" />
+
+<title>Markdown example</title>
+
+<script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">My Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="md_ex.html">My Data</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Markdown example</h1>
+<h4 class="author">Alice</h4>
+<h4 class="date">2025-12-02</h4>
+
+</div>
+
+
+<div id="scientists" class="section level1">
+<h1>1,500 scientists</h1>
+<p>Monya Baker<br />
+25 May 2016</p>
+<div id="survey-crisis-research." class="section level2">
+<h2>Survey ‘crisis’ research.</h2>
+<p><strong>More than 70%</strong>, and more have failed. Citation to my
+paper <span class="citation">L. A. A. Cardona Alexia AND Pagani (<a
+href="#ref-cardona2014">2014</a>)</span> and <span class="citation">A.
+Cardona et al. (<a href="#ref-cardona2019">2019</a>)</span>.</p>
+<p>The data reveal contradictory…</p>
+<pre class="r"><code>library(tidyverse)
+library(patchwork)
+library(rmarkdown) # used for paged_table function
+library(kableExtra) # used for table
+library(ggpubr) #used for ggarrange function </code></pre>
+<pre class="r"><code>download.file(url=&quot;https://raw.githubusercontent.com/cambiotraining/reproducibility-training/master/data/gapminder_data.csv&quot;, destfile=&quot;data/gapminder_data.csv&quot;)</code></pre>
+<div id="lists" class="section level3">
+<h3>Lists</h3>
+<p><strong>Ordered list</strong></p>
+<ol style="list-style-type: decimal">
+<li>Item 1</li>
+<li>Item 2<br />
+</li>
+<li>Item 3
+<ol style="list-style-type: lower-alpha">
+<li>Item 3a
+<ol style="list-style-type: lower-roman">
+<li>Item 3ai<br />
+</li>
+<li>Item 3aii<br />
+</li>
+</ol></li>
+<li>Item 3b</li>
+<li>Item 3c<br />
+</li>
+</ol></li>
+<li>Item 4</li>
+</ol>
+<p><strong>Unordered list</strong></p>
+<ul>
+<li>Item 1</li>
+<li>Item 2</li>
+<li>Item 3
+<ul>
+<li>Item 3a
+<ul>
+<li>Item 3ai</li>
+<li>Item 3aii</li>
+</ul></li>
+<li>Item 3b</li>
+<li>Item 3c</li>
+</ul></li>
+<li>Item 4</li>
+</ul>
+<p><strong>Tasks</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox" />an unchecked task list
+item</label></li>
+<li><label><input type="checkbox" checked="" />checked item</label></li>
+</ul>
+</div>
+<div id="links" class="section level3">
+<h3>Links</h3>
+<p><a href="#scientists">Link to header</a></p>
+<p><a
+href="https://training.cam.ac.uk/bioinformatics/event-timetable">workshop</a></p>
+</div>
+<div id="block" class="section level3">
+<h3>Block</h3>
+<blockquote>
+<p>Example of a block</p>
+</blockquote>
+</div>
+<div id="table" class="section level3">
+<h3>Table</h3>
+<p>Manual table</p>
+<table>
+<thead>
+<tr class="header">
+<th>Column 1</th>
+<th>Column 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Item 1,1</td>
+<td>Item 1,2</td>
+</tr>
+<tr class="even">
+<td>Item 2,1</td>
+<td>Item 2,2</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>#read file into R
+pop_data &lt;- read_csv(&quot;data/gapminder_data.csv&quot;)</code></pre>
+<pre><code>## Rows: 1704 Columns: 6
+## ── Column specification ─────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (2): country, continent
+## dbl (4): year, pop, lifeExp, gdpPercap
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>#create a table with data from European countries in 2007 showing the countries 
+#with the largest life expectancy at the top 
+euro_data_tbl &lt;- pop_data %&gt;% 
+                    filter(continent == &quot;Europe&quot; &amp; year == 2007) %&gt;% 
+                    select(-continent, -year) %&gt;% 
+                    arrange(desc(lifeExp)) %&gt;% 
+                    rename(Country = country, &quot;Population Size&quot; = pop, 
+                      &quot;Life Expectancy&quot; = lifeExp, &quot;GDP&quot; = gdpPercap)</code></pre>
+<p>Include full table</p>
+<pre class="r"><code>euro_data_tbl %&gt;% 
+          kbl()</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Country
+</th>
+<th style="text-align:right;">
+Population Size
+</th>
+<th style="text-align:right;">
+Life Expectancy
+</th>
+<th style="text-align:right;">
+GDP
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Iceland
+</td>
+<td style="text-align:right;">
+301931
+</td>
+<td style="text-align:right;">
+81.757
+</td>
+<td style="text-align:right;">
+36180.789
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Switzerland
+</td>
+<td style="text-align:right;">
+7554661
+</td>
+<td style="text-align:right;">
+81.701
+</td>
+<td style="text-align:right;">
+37506.419
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Spain
+</td>
+<td style="text-align:right;">
+40448191
+</td>
+<td style="text-align:right;">
+80.941
+</td>
+<td style="text-align:right;">
+28821.064
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sweden
+</td>
+<td style="text-align:right;">
+9031088
+</td>
+<td style="text-align:right;">
+80.884
+</td>
+<td style="text-align:right;">
+33859.748
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+France
+</td>
+<td style="text-align:right;">
+61083916
+</td>
+<td style="text-align:right;">
+80.657
+</td>
+<td style="text-align:right;">
+30470.017
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Italy
+</td>
+<td style="text-align:right;">
+58147733
+</td>
+<td style="text-align:right;">
+80.546
+</td>
+<td style="text-align:right;">
+28569.720
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Norway
+</td>
+<td style="text-align:right;">
+4627926
+</td>
+<td style="text-align:right;">
+80.196
+</td>
+<td style="text-align:right;">
+49357.190
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Austria
+</td>
+<td style="text-align:right;">
+8199783
+</td>
+<td style="text-align:right;">
+79.829
+</td>
+<td style="text-align:right;">
+36126.493
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Netherlands
+</td>
+<td style="text-align:right;">
+16570613
+</td>
+<td style="text-align:right;">
+79.762
+</td>
+<td style="text-align:right;">
+36797.933
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Greece
+</td>
+<td style="text-align:right;">
+10706290
+</td>
+<td style="text-align:right;">
+79.483
+</td>
+<td style="text-align:right;">
+27538.412
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Belgium
+</td>
+<td style="text-align:right;">
+10392226
+</td>
+<td style="text-align:right;">
+79.441
+</td>
+<td style="text-align:right;">
+33692.605
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+United Kingdom
+</td>
+<td style="text-align:right;">
+60776238
+</td>
+<td style="text-align:right;">
+79.425
+</td>
+<td style="text-align:right;">
+33203.261
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Germany
+</td>
+<td style="text-align:right;">
+82400996
+</td>
+<td style="text-align:right;">
+79.406
+</td>
+<td style="text-align:right;">
+32170.374
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Finland
+</td>
+<td style="text-align:right;">
+5238460
+</td>
+<td style="text-align:right;">
+79.313
+</td>
+<td style="text-align:right;">
+33207.084
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ireland
+</td>
+<td style="text-align:right;">
+4109086
+</td>
+<td style="text-align:right;">
+78.885
+</td>
+<td style="text-align:right;">
+40675.996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Denmark
+</td>
+<td style="text-align:right;">
+5468120
+</td>
+<td style="text-align:right;">
+78.332
+</td>
+<td style="text-align:right;">
+35278.419
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Portugal
+</td>
+<td style="text-align:right;">
+10642836
+</td>
+<td style="text-align:right;">
+78.098
+</td>
+<td style="text-align:right;">
+20509.648
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Slovenia
+</td>
+<td style="text-align:right;">
+2009245
+</td>
+<td style="text-align:right;">
+77.926
+</td>
+<td style="text-align:right;">
+25768.258
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Czech Republic
+</td>
+<td style="text-align:right;">
+10228744
+</td>
+<td style="text-align:right;">
+76.486
+</td>
+<td style="text-align:right;">
+22833.309
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Albania
+</td>
+<td style="text-align:right;">
+3600523
+</td>
+<td style="text-align:right;">
+76.423
+</td>
+<td style="text-align:right;">
+5937.030
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Croatia
+</td>
+<td style="text-align:right;">
+4493312
+</td>
+<td style="text-align:right;">
+75.748
+</td>
+<td style="text-align:right;">
+14619.223
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Poland
+</td>
+<td style="text-align:right;">
+38518241
+</td>
+<td style="text-align:right;">
+75.563
+</td>
+<td style="text-align:right;">
+15389.925
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bosnia and Herzegovina
+</td>
+<td style="text-align:right;">
+4552198
+</td>
+<td style="text-align:right;">
+74.852
+</td>
+<td style="text-align:right;">
+7446.299
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Slovak Republic
+</td>
+<td style="text-align:right;">
+5447502
+</td>
+<td style="text-align:right;">
+74.663
+</td>
+<td style="text-align:right;">
+18678.314
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Montenegro
+</td>
+<td style="text-align:right;">
+684736
+</td>
+<td style="text-align:right;">
+74.543
+</td>
+<td style="text-align:right;">
+9253.896
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Serbia
+</td>
+<td style="text-align:right;">
+10150265
+</td>
+<td style="text-align:right;">
+74.002
+</td>
+<td style="text-align:right;">
+9786.535
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hungary
+</td>
+<td style="text-align:right;">
+9956108
+</td>
+<td style="text-align:right;">
+73.338
+</td>
+<td style="text-align:right;">
+18008.944
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bulgaria
+</td>
+<td style="text-align:right;">
+7322858
+</td>
+<td style="text-align:right;">
+73.005
+</td>
+<td style="text-align:right;">
+10680.793
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Romania
+</td>
+<td style="text-align:right;">
+22276056
+</td>
+<td style="text-align:right;">
+72.476
+</td>
+<td style="text-align:right;">
+10808.476
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Turkey
+</td>
+<td style="text-align:right;">
+71158647
+</td>
+<td style="text-align:right;">
+71.777
+</td>
+<td style="text-align:right;">
+8458.276
+</td>
+</tr>
+</tbody>
+</table>
+<p>Pretty</p>
+<pre class="r"><code>euro_data_tbl %&gt;% 
+          kbl() %&gt;%
+          kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;)) </code></pre>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Country
+</th>
+<th style="text-align:right;">
+Population Size
+</th>
+<th style="text-align:right;">
+Life Expectancy
+</th>
+<th style="text-align:right;">
+GDP
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Iceland
+</td>
+<td style="text-align:right;">
+301931
+</td>
+<td style="text-align:right;">
+81.757
+</td>
+<td style="text-align:right;">
+36180.789
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Switzerland
+</td>
+<td style="text-align:right;">
+7554661
+</td>
+<td style="text-align:right;">
+81.701
+</td>
+<td style="text-align:right;">
+37506.419
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Spain
+</td>
+<td style="text-align:right;">
+40448191
+</td>
+<td style="text-align:right;">
+80.941
+</td>
+<td style="text-align:right;">
+28821.064
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sweden
+</td>
+<td style="text-align:right;">
+9031088
+</td>
+<td style="text-align:right;">
+80.884
+</td>
+<td style="text-align:right;">
+33859.748
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+France
+</td>
+<td style="text-align:right;">
+61083916
+</td>
+<td style="text-align:right;">
+80.657
+</td>
+<td style="text-align:right;">
+30470.017
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Italy
+</td>
+<td style="text-align:right;">
+58147733
+</td>
+<td style="text-align:right;">
+80.546
+</td>
+<td style="text-align:right;">
+28569.720
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Norway
+</td>
+<td style="text-align:right;">
+4627926
+</td>
+<td style="text-align:right;">
+80.196
+</td>
+<td style="text-align:right;">
+49357.190
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Austria
+</td>
+<td style="text-align:right;">
+8199783
+</td>
+<td style="text-align:right;">
+79.829
+</td>
+<td style="text-align:right;">
+36126.493
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Netherlands
+</td>
+<td style="text-align:right;">
+16570613
+</td>
+<td style="text-align:right;">
+79.762
+</td>
+<td style="text-align:right;">
+36797.933
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Greece
+</td>
+<td style="text-align:right;">
+10706290
+</td>
+<td style="text-align:right;">
+79.483
+</td>
+<td style="text-align:right;">
+27538.412
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Belgium
+</td>
+<td style="text-align:right;">
+10392226
+</td>
+<td style="text-align:right;">
+79.441
+</td>
+<td style="text-align:right;">
+33692.605
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+United Kingdom
+</td>
+<td style="text-align:right;">
+60776238
+</td>
+<td style="text-align:right;">
+79.425
+</td>
+<td style="text-align:right;">
+33203.261
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Germany
+</td>
+<td style="text-align:right;">
+82400996
+</td>
+<td style="text-align:right;">
+79.406
+</td>
+<td style="text-align:right;">
+32170.374
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Finland
+</td>
+<td style="text-align:right;">
+5238460
+</td>
+<td style="text-align:right;">
+79.313
+</td>
+<td style="text-align:right;">
+33207.084
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ireland
+</td>
+<td style="text-align:right;">
+4109086
+</td>
+<td style="text-align:right;">
+78.885
+</td>
+<td style="text-align:right;">
+40675.996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Denmark
+</td>
+<td style="text-align:right;">
+5468120
+</td>
+<td style="text-align:right;">
+78.332
+</td>
+<td style="text-align:right;">
+35278.419
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Portugal
+</td>
+<td style="text-align:right;">
+10642836
+</td>
+<td style="text-align:right;">
+78.098
+</td>
+<td style="text-align:right;">
+20509.648
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Slovenia
+</td>
+<td style="text-align:right;">
+2009245
+</td>
+<td style="text-align:right;">
+77.926
+</td>
+<td style="text-align:right;">
+25768.258
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Czech Republic
+</td>
+<td style="text-align:right;">
+10228744
+</td>
+<td style="text-align:right;">
+76.486
+</td>
+<td style="text-align:right;">
+22833.309
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Albania
+</td>
+<td style="text-align:right;">
+3600523
+</td>
+<td style="text-align:right;">
+76.423
+</td>
+<td style="text-align:right;">
+5937.030
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Croatia
+</td>
+<td style="text-align:right;">
+4493312
+</td>
+<td style="text-align:right;">
+75.748
+</td>
+<td style="text-align:right;">
+14619.223
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Poland
+</td>
+<td style="text-align:right;">
+38518241
+</td>
+<td style="text-align:right;">
+75.563
+</td>
+<td style="text-align:right;">
+15389.925
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bosnia and Herzegovina
+</td>
+<td style="text-align:right;">
+4552198
+</td>
+<td style="text-align:right;">
+74.852
+</td>
+<td style="text-align:right;">
+7446.299
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Slovak Republic
+</td>
+<td style="text-align:right;">
+5447502
+</td>
+<td style="text-align:right;">
+74.663
+</td>
+<td style="text-align:right;">
+18678.314
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Montenegro
+</td>
+<td style="text-align:right;">
+684736
+</td>
+<td style="text-align:right;">
+74.543
+</td>
+<td style="text-align:right;">
+9253.896
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Serbia
+</td>
+<td style="text-align:right;">
+10150265
+</td>
+<td style="text-align:right;">
+74.002
+</td>
+<td style="text-align:right;">
+9786.535
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hungary
+</td>
+<td style="text-align:right;">
+9956108
+</td>
+<td style="text-align:right;">
+73.338
+</td>
+<td style="text-align:right;">
+18008.944
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bulgaria
+</td>
+<td style="text-align:right;">
+7322858
+</td>
+<td style="text-align:right;">
+73.005
+</td>
+<td style="text-align:right;">
+10680.793
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Romania
+</td>
+<td style="text-align:right;">
+22276056
+</td>
+<td style="text-align:right;">
+72.476
+</td>
+<td style="text-align:right;">
+10808.476
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Turkey
+</td>
+<td style="text-align:right;">
+71158647
+</td>
+<td style="text-align:right;">
+71.777
+</td>
+<td style="text-align:right;">
+8458.276
+</td>
+</tr>
+</tbody>
+</table>
+<p>Paged table</p>
+<pre class="r"><code>paged_table(euro_data_tbl)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Population Size"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Life Expectancy"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["GDP"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Iceland","2":"301931","3":"81.757","4":"36180.789"},{"1":"Switzerland","2":"7554661","3":"81.701","4":"37506.419"},{"1":"Spain","2":"40448191","3":"80.941","4":"28821.064"},{"1":"Sweden","2":"9031088","3":"80.884","4":"33859.748"},{"1":"France","2":"61083916","3":"80.657","4":"30470.017"},{"1":"Italy","2":"58147733","3":"80.546","4":"28569.720"},{"1":"Norway","2":"4627926","3":"80.196","4":"49357.190"},{"1":"Austria","2":"8199783","3":"79.829","4":"36126.493"},{"1":"Netherlands","2":"16570613","3":"79.762","4":"36797.933"},{"1":"Greece","2":"10706290","3":"79.483","4":"27538.412"},{"1":"Belgium","2":"10392226","3":"79.441","4":"33692.605"},{"1":"United Kingdom","2":"60776238","3":"79.425","4":"33203.261"},{"1":"Germany","2":"82400996","3":"79.406","4":"32170.374"},{"1":"Finland","2":"5238460","3":"79.313","4":"33207.084"},{"1":"Ireland","2":"4109086","3":"78.885","4":"40675.996"},{"1":"Denmark","2":"5468120","3":"78.332","4":"35278.419"},{"1":"Portugal","2":"10642836","3":"78.098","4":"20509.648"},{"1":"Slovenia","2":"2009245","3":"77.926","4":"25768.258"},{"1":"Czech Republic","2":"10228744","3":"76.486","4":"22833.309"},{"1":"Albania","2":"3600523","3":"76.423","4":"5937.030"},{"1":"Croatia","2":"4493312","3":"75.748","4":"14619.223"},{"1":"Poland","2":"38518241","3":"75.563","4":"15389.925"},{"1":"Bosnia and Herzegovina","2":"4552198","3":"74.852","4":"7446.299"},{"1":"Slovak Republic","2":"5447502","3":"74.663","4":"18678.314"},{"1":"Montenegro","2":"684736","3":"74.543","4":"9253.896"},{"1":"Serbia","2":"10150265","3":"74.002","4":"9786.535"},{"1":"Hungary","2":"9956108","3":"73.338","4":"18008.944"},{"1":"Bulgaria","2":"7322858","3":"73.005","4":"10680.793"},{"1":"Romania","2":"22276056","3":"72.476","4":"10808.476"},{"1":"Turkey","2":"71158647","3":"71.777","4":"8458.276"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Default table - ugly, don’t use</p>
+<pre class="r"><code>euro_data_tbl</code></pre>
+<pre><code>## # A tibble: 30 × 4
+##    Country     `Population Size` `Life Expectancy`    GDP
+##    &lt;chr&gt;                   &lt;dbl&gt;             &lt;dbl&gt;  &lt;dbl&gt;
+##  1 Iceland                301931              81.8 36181.
+##  2 Switzerland           7554661              81.7 37506.
+##  3 Spain                40448191              80.9 28821.
+##  4 Sweden                9031088              80.9 33860.
+##  5 France               61083916              80.7 30470.
+##  6 Italy                58147733              80.5 28570.
+##  7 Norway                4627926              80.2 49357.
+##  8 Austria               8199783              79.8 36126.
+##  9 Netherlands          16570613              79.8 36798.
+## 10 Greece               10706290              79.5 27538.
+## # ℹ 20 more rows</code></pre>
+</div>
+<div id="images" class="section level3">
+<h3>Images</h3>
+<p>In Markdown:<br />
+<img src="img/photo_5321516238851142298_y.jpg" alt="Beautiful me" /></p>
+<p>In R code:</p>
+<pre class="r"><code>p1 &lt;- ggplot(pop_data %&gt;% filter(year==2007),
+             aes(x=gdpPercap,
+                 y=lifeExp,
+                 colour=continent))+
+  geom_point()+
+  scale_x_log10()+
+  theme_minimal()
+
+p2 &lt;- ggplot(pop_data %&gt;% filter(country %in% c(&quot;United States&quot;,
+                                                &quot;China&quot;,
+                                                &quot;India&quot;)),
+             aes(x=year,
+                 y=pop,
+                 colour=country))+
+  geom_line()+
+  theme_minimal()
+
+p1 + p2</code></pre>
+<p><img src="md_ex_files/figure-html/patchwork-1.png" width="672" /></p>
+<pre class="r"><code>p1 / p2</code></pre>
+<p><img src="md_ex_files/figure-html/patchwork-2.png" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1 class="unnumbered">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent"
+entry-spacing="0">
+<div id="ref-cardona2019" class="csl-entry">
+Cardona, Alexia, Felix R. Day, John R. B. Perry, Marie Loh, Audrey Y.
+Chu, Benjamin Lehne, Dirk S. Paul, et al. 2019. <span>“Epigenome-Wide
+Association Study of Incident Type 2 Diabetes in a British Population:
+EPIC-Norfolk Study.”</span> <em>Diabetes</em>. <a
+href="https://doi.org/10.2337/db18-0290">https://doi.org/10.2337/db18-0290</a>.
+</div>
+<div id="ref-cardona2014" class="csl-entry">
+Cardona, Luca AND Antao, Alexia AND Pagani. 2014. <span>“Genome-Wide
+Analysis of Cold Adaptation in Indigenous Siberian Populations.”</span>
+<em>PLOS ONE</em> 9 (5): 1–11. <a
+href="https://doi.org/10.1371/journal.pone.0098076">https://doi.org/10.1371/journal.pone.0098076</a>.
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
