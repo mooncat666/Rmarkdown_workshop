@@ -158,6 +158,8 @@ p1 + p2
 p1 / p2
 ```
 
+A new line to test version control
+
 You don't need to do anything with the references, they are generated automatically (_isn't that lovely?!_)
 
 # References
